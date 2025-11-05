@@ -8,6 +8,7 @@ BANDS = [
     {'id': 2, 'name': 'Aphex Twin', 'genre': 'Electronic'},
     {'id': 3, 'name': 'Black Sabbath', 'genre': 'Metal', 'albums': [
         {'title': 'Master of Reality', 'release_date': '1971-07-21'},
+        {'title': 'Silly Copy', 'release_date': '1981-07-21'},
     ]},
     {'id': 4, 'name': 'Wu-Tang Clan', 'genre': 'Hip-Hop'},    
 ]
