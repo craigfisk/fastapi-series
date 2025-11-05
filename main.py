@@ -2,9 +2,16 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
-async def index() -> dict[str, str]:
-    return {'hello': 'world'}
+BANDS = [
+    {'id': 1, 'name': 'The Kinks', 'genre': 'Rock'},
+    {'id': 2, 'name': 'Aphex Twin', 'genre': 'Electronic'},
+    {'id': 3, 'name': 'Black Sabbath', 'genre': 'Metal'},
+    {'id': 4, 'name': 'Wu-Tang Clan', 'genre': 'Hip-Hop'},    
+]
+
+@app.get("/bands")
+async def bands() -> list[dict]:
+    return BANDS
 
 @app.get("/about")
 async def about() -> str:
