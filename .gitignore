@@ -1,0 +1,64 @@
+# Virtual environment
+# Common names for virtual environment folders are 'venv' or '.venv'
+venv/
+.venv/
+.venv-fastapi/
+env/
+.env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Environment variables and sensitive files
+# It is recommended to use an .env file for sensitive data (like database URLs) 
+# and ignore it, while potentially committing an .env.example file.
+.env
+.flaskenv
+
+# SQLite database files
+# If you are using a local SQLite database for development, ignore its file(s).
+# The default name is often db.sqlite3, but adjust as needed.
+*.sqlite 
+*.sqlite3
+*.db
+# Does this cover Postgresql? Not really, as Postgresql typically runs as a separate service.
+/database.db # or the specific name of your db file
+db.sqlite3-journal
+
+# IDE-specific files (optional, depending on your IDE)
+.idea/         # JetBrains IDEs (PyCharm, etc)
+.vscode/       # VS Code (if you have user-specific settings you don't want to share)
+*.swp
+*~
+.DS_Store      # macOS system file
