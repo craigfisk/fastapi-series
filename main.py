@@ -47,6 +47,6 @@ async def band(band_id: int) -> BandWithID:
 @app.post("/bands")
 async def create_band(band_data: BandCreate) -> BandWithID:
     id = BANDS[-1]['id'] + 1
-    band = BandWithID(id=id, **band_data.model_dump()).model_dump
+    band = BandWithID(id=id, **band_data.model_dump()).model_dump()
     BANDS.append(band)
     return band 
