@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from schemas import GenreURLChoices, Band
+from schemas import GenreURLChoices, BandBase, BandCreate, BandWithID
+
 
 app = FastAPI()
 
