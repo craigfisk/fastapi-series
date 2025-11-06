@@ -9,8 +9,9 @@ def double(x: Annotated[int, (0,100)]) -> int:
     hint = type_hints['x']
     if get_origin(hint) is Annotated:
         hint_type, *hint_args =get_args(hint)
-        print(hint_type)
-        print(hint_args)
+        low, high = hint_args[0]
+        if not low <= x <= high:
+            raise ValueError(f"{x} must be between {low} and {high}") 
     # print(hint)
     return x * 2
 
