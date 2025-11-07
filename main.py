@@ -40,8 +40,11 @@ BANDS = [
 #     return band_list
 
 @app.get("/bands/{band_id}")
-async def band(band_id: Annotated[int, Path(title="The band ID")]) -> Band:
-
+async def band(
+    band_id: Annotated[int, Path(title="The band ID")],
+    session: Session = Depends(get_session)
+) -> Band:
+    band = session.get(Band, band_id)
     if band is None:
         raise HTTPException(status_code=404, detail="Band not found")   
     return band
