@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Path, Query, Depends
 from models import GenreURLChoices, BandBase, BandCreate, Band, Album
 from typing import Annotated
-from sqlmodel import Session
+from sqlmodel import Session, select
 from contextlib import asynccontextmanager
 from db import init_db, get_session
 
@@ -22,22 +22,26 @@ BANDS = [
     {'id': 4, 'name': 'Wu-Tang Clan', 'genre': 'Hip-Hop'},    
 ]
 
-# @app.get("/bands")
-# async def bands(genre: GenreURLChoices | None = None,
-#     has_albums: bool = False
-# ) -> list[BandWithID]:
-#     band_list = [BandWithID(**b) for b in BANDS]
+@app.get("/bands")
+async def bands(
+    genre: GenreURLChoices | None = None,
+    q: Annotated[str | None, Query(max_length=10)] = None,
+    session: Session = Depends(get_session)
+) -> list[Band]:
+    
+    band_list = session.exec(select(Band)).all()
 
-#     if genre:
-#         band_list = [
-#             b for b in band_list if b.genre.lower() == genre.value
-#         ]
+    if genre:
+        band_list = [
+            b for b in band_list if b.genre.lower() == genre.value
+        ]
 
-#     if has_albums:
-#         band_list = [
-#             b for b in band_list if len(b.albums) > 0
-#         ]
-#     return band_list
+    if q:
+        band_list = [
+            b for b in band_list if q.lower() in b.name.lower()
+        ]
+        
+    return band_list
 
 @app.get("/bands/{band_id}")
 async def band(
