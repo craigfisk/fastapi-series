@@ -13,17 +13,18 @@ def check_value_range(func):
         if get_origin(hint) is Annotated:
             hint_type, *hint_args = get_args(hint)
             low, high = hint_args[0]
+
             if not low <= x <= high:
                 raise ValueError(f"{x} falls outside boundary {low} and {high}") 
             
-        return func()
+        return func(x)
     return wrapped
 
 @check_value_range
 def double(x: Annotated[int, (0,100)]) -> int:
     return x * 2
 
-result = double(11155) 
+result = double(3) 
 
 print(result)  # This will print 1022230
 
