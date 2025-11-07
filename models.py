@@ -35,7 +35,7 @@ class BandCreate(BandBase):
         return data 
     
     
- class Band(BandBase, table=True):
+class Band(BandBase, table=True):
     id: int = Field(default=None, primary_key=True)
     albums: list[Album] = Relationship(back_populates="band")
     
