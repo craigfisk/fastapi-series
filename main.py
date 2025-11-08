@@ -5,12 +5,13 @@ from sqlmodel import Session, select
 from contextlib import asynccontextmanager
 from db import init_db, get_session
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    init_db()
-    yield
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     init_db()
+#     yield
 
-app = FastAPI(lifespan=lifespan)
+# app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 # BANDS = [
 #     {'id': 1, 'name': 'The Kinks', 'genre': 'Rock'},
