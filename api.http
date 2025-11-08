@@ -2,8 +2,9 @@ POST http://localhost:8000/bands/
 Content-Type: application/json
 
 {
-    "name": "Birds of the World",
-    "genre": "Electronic"
+    "name": "Ducks of the World",
+    "genre": "Electronic",
+    "date_formed": "2025-11-07"
 }
 
 ###
