@@ -32,10 +32,10 @@ class BandCreate(BandBase):
             valid_genres = {g.value for g in GenreChoices}
             if genre not in valid_genres:
                 raise ValueError(f"Genre '{genre}' is not valid. Choose from {valid_genres}.")
-        return data 
-    
-    
+        return data  
 class Band(BandBase, table=True):
     id: int = Field(default=None, primary_key=True)
     albums: list[Album] = Relationship(back_populates="band")
+    date_formed: date | None = None
+
     
